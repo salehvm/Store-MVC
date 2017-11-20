@@ -1,0 +1,42 @@
+﻿@using Store.Models;
+@{
+    ViewBag.Title = "Update";
+}
+
+
+
+<div class="row" style="margin-top:15px;">
+    <div class="col-md-12">
+        @*<a href="@Url.Action("add","home")" class="btn btn-primary">Əlavə et</a>*@
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Product About</th>
+                    <th>Product Price</th>
+                    <th>Product TypeName</th>
+                    <th>Product VtaegoryName</th>
+
+                </tr>
+            </thead>
+            <tbody>
+             
+                @foreach (Products item in ViewBag.products)
+                {
+                  <tr>
+                      <td>@item.Name</td>
+                      <td>@item.About</td>
+                      <td>@item.Price</td>
+                      <td>@item.Types.Name</td>
+                      <td>@item.Categories.Name</td>
+
+                      <td>
+                          <a href="@Url.Action("yenile","home",new { id=item.Id,group=item.Name.Replace(" ","-").ToLower()})"><i class="fa fa-pencil"></i></a>
+                          <a onclick="return confirm('Are you sure?')" href="@Url.Action("delete","home",new { id=item.Id })"><i class="fa fa-times"></i></a>
+                      </td>
+                  </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

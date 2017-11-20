@@ -1,0 +1,60 @@
+﻿@using Store.Models;
+@{
+    ViewBag.Title = "yenile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-top:25px">
+    <div class="col-md-6">
+        <form action="@Url.Action("yenile", "home")" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" type="text" name="Name" class="form-control" value="@ViewBag.products.Name"/>
+            </div>
+            <div class="form-group">
+                <label for="name">Price</label>
+                <input id="name" type="text" name="Price" class="form-control" value="@ViewBag.products.Price"/>
+
+            </div>
+            <div class="form-group">
+                <label>About</label>
+                <textarea name="About" class="form-control">@ViewBag.products.About</textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Group</label>
+                <select name="CategoryId" class="form-control"
+                        data-validation="required"
+                        data-validation-error-msg-required="Adinizi yazin">
+                    @foreach (Categories item in ViewBag.categories)
+                    {
+                        <option @(item.Id == ViewBag.products.CategoryId ? "selected" : "") value="@item.Id">@item.Name</option>
+                       
+
+                    }
+
+
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Group</label>
+                <select name="TypeId" class="form-control"
+                        data-validation="required"
+                        data-validation-error-msg-required="Adinizi yazin">
+                    @foreach (Types item in ViewBag.types)
+                    {
+                        <option @(item.Id == ViewBag.products.TypeId ? "selected" : "") value="@item.Id">@item.Name</option>
+
+                    }
+
+                </select>
+            </div>
+
+
+
+
+            <button type="submit" class="btn btn-primary">yenile</button>
+        </form>
+    </div>
+
+</div>
